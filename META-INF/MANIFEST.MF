@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: admin_project
+Bundle-SymbolicName: admin_project
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-21
+Automatic-Module-Name: admin.project
+Export-Package: com.example.admin,
+ com.example.admin.config,
+ com.example.admin.controller,
+ com.example.admin.dto,
+ com.example.admin.model,
+ com.example.admin.repository,
+ com.example.admin.security,
+ com.example.admin.service
