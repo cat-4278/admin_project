@@ -13,6 +13,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,7 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Table(name = "auth_group")
 @Data
+@IdClass(AuthGroup.AuthGroupId.class)
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthGroup extends BaseEntity {

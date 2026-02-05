@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import org.hibernate.annotations.Comment;
 
+import com.example.admin.authGroup.AuthGroup;
 import com.example.admin.com.BaseEntity;
 import com.example.admin.program.Program;
 
@@ -11,6 +12,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
@@ -22,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Table(name = "auth_group_menu")
 @Data
+@IdClass(AuthGroupMenu.AuthGroupMenuId.class)
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthGroupMenu extends BaseEntity {
@@ -122,8 +125,6 @@ public class AuthGroupMenu extends BaseEntity {
     @NoArgsConstructor
     @RequiredArgsConstructor(staticName = "of")
     public static class AuthGroupMenuId implements Serializable {
-        @NonNull
-        private String company;
         @NonNull
         private String grpAuthCd;
         @NonNull

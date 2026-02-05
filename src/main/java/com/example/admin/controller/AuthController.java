@@ -1,5 +1,8 @@
 package com.example.admin.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,6 +21,8 @@ import com.example.admin.dto.AuthDTO.LoginResponse;
 import com.example.admin.dto.AuthDTO.MessageResponse;
 import com.example.admin.dto.AuthDTO.SignupRequest;
 import com.example.admin.dto.AuthDTO.UserResponse;
+import com.example.admin.menu.MenuService;
+import com.example.admin.menu.MenuVO;
 import com.example.admin.security.JwtTokenProvider;
 import com.example.admin.user.User;
 import com.example.admin.user.UserRepository;
@@ -35,6 +40,7 @@ public class AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider tokenProvider;
+    @Autowired MenuService  menuService;
 
     // ─── 로그인
     @PostMapping("/login")
@@ -106,5 +112,12 @@ public class AuthController {
             .role(user.getRole().name())
             .isActive(user.getIsActive())
             .build());
+    }
+    
+    
+    @GetMapping("/menuList")
+    public ResponseEntity<List<MenuVO>> getMenuList(@RequestBody(required = false) MenuVO vo) {
+    	List<MenuVO> list = menuService.getMenuList(vo);
+        return ResponseEntity.ok(list);
     }
 }

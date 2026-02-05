@@ -49,9 +49,6 @@ public class Menu extends BaseEntity {
     @Comment(value = "상위메뉴코드")
     private String parentCd;
 
-    @Column(name = "MENU_GRP_CD", length = 100)
-    @Comment(value = "메뉴그룹코드")
-    private String menuGrpCd;
     
     @Column(name = "LV", length = 10)
     @Comment(value = "레벨")
@@ -69,10 +66,6 @@ public class Menu extends BaseEntity {
     @Comment(value = "아이콘명")
     private String iconNm;
     
-    @Column(name = "APP_MENU_CD", length = 50)
-    @Comment(value = "APP메뉴코드")
-    private String appMenuCd;
-
     @Column(name = "MENU_SORT", precision = 20)
     @Comment(value = "우선순위")
     private Integer menuSort;
@@ -82,10 +75,13 @@ public class Menu extends BaseEntity {
 
     @Transient
     private List<Menu> children = new ArrayList<>();
-
-    @ManyToOne
-    @JoinColumn(name = "PROG_CD", referencedColumnName = "PROG_CD", insertable = false, updatable = false)
-    private Program program;
+    
+	/*
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name = "PROG_CD", referencedColumnName = "PROG_CD", insertable =
+	 * false, updatable = false) private Program program;
+	 */
     
 
     @JsonProperty("name")
@@ -121,7 +117,6 @@ public class Menu extends BaseEntity {
     public static Menu of(String code, String menuGrpCd, String menuNm, String parentCd, int lv, int sort, String progCd) {
         Menu menu = new Menu();
         menu.setMenuCd(code);
-        menu.setMenuGrpCd(menuGrpCd);
         menu.setMenuNm(menuNm);
         menu.setParentCd(parentCd);
         menu.setLv(lv);

@@ -4,12 +4,14 @@ import java.io.Serializable;
 
 import org.hibernate.annotations.Comment;
 
+import com.example.admin.authGroupMenu.AuthGroupMenu;
 import com.example.admin.com.BaseEntity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 @Entity
 @Table(name = "auth_group_user")
 @Data
+@IdClass(AuthGroupUser.AuthGroupUserId.class)
 @NoArgsConstructor
 @AllArgsConstructor
 public class AuthGroupUser extends BaseEntity {
